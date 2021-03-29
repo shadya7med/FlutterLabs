@@ -16,14 +16,16 @@ class ProductDetailsState extends State<ProductDetails> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back),
+          leading: InkWell(onTap: () {
+            Navigator.pop(context);
+          }, child: Icon(Icons.arrow_back)),
           title: Text('Saara Poly Silk ...'),
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: IconButton(
                 //Icon can be used to make it white
-                onPressed: null,
+                onPressed: null,disabledColor: Colors.white,
                 icon: Icon(Icons.favorite),
               ),
             ),
@@ -104,7 +106,7 @@ class ProductDetailsState extends State<ProductDetails> {
                             shape: BoxShape.rectangle,
                             color: Colors.red[400],
                             borderRadius:
-                                BorderRadius.all(Radius.circular(18))),
+                            BorderRadius.all(Radius.circular(18))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -249,7 +251,10 @@ class ProductDetailsState extends State<ProductDetails> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                                width: MediaQuery.of(context).size.width / 2,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width / 2,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

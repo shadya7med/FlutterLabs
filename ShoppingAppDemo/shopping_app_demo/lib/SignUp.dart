@@ -100,7 +100,10 @@ class SignUpState extends State<SignUp> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                //also check for info then
+                Navigator.pushNamedAndRemoveUntil(context, '/productDetails',(_)=>false);
+              },
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

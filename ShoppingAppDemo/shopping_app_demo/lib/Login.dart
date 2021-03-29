@@ -57,13 +57,13 @@ class LoginState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: TextField(
               decoration:
-                  InputDecoration(hintText: 'Username or Email Address',suffix: InkWell(onTap: togglePasswordView,child: Icon(Icons.visibility),)),
+                  InputDecoration(hintText: 'Username or Email Address'),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: TextField(
-              decoration: InputDecoration(hintText: 'Password'),
+              decoration: InputDecoration(hintText: 'Password',suffix: InkWell(onTap: togglePasswordView,child: Icon(Icons.visibility))),
               obscureText: _isHidden,
             ),
           ),
@@ -87,7 +87,13 @@ class LoginState extends State<Login> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+
+                //check for valid inputs if they are correct go to product details page
+                //and this screen should be removed from the stack
+                Navigator.pushNamed(context, '/productDetails');//should be pushNamedAndRemoveUntil
+
+              },
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -122,10 +128,14 @@ class LoginState extends State<Login> {
                 "Don't Have an Account? ",
                 style: TextStyle(color: Colors.grey),
               ),
-              Text(
-                'Register',
-                style: TextStyle(
-                    color: Colors.black87, fontWeight: FontWeight.bold),
+              InkWell(onTap: (){
+                Navigator.pushNamedAndRemoveUntil(context, '/signUp', (route) => false);
+              },
+                child: Text(
+                  'Register',
+                  style: TextStyle(
+                      color: Colors.black87, fontWeight: FontWeight.bold),
+                ),
               )
             ],
           ),
